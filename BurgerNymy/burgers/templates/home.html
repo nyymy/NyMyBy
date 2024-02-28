@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+{% block title %}Home Page{% endblock %}
+{% load static %}
+{% block content %}
+<style>
+        .logo {
+    height: 120%;
+    width: 120%;
+
+}
+    </style>
+<img class="logo" src="{% static 'images/Logo_BW.png' %}" alt="My Image">
+{% endblock %}

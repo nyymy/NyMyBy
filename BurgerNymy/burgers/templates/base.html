@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      {% block title %}
+        Django App
+      {% endblock %}
+    </title>
+    <link rel="icon" href="{% static 'images/hamburger.png' %}" type="image/x-icon">
+    <link rel="stylesheet" id="fname" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
+  </head>
+  <body >
+    <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">NyMyBu</a>
+      <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/menu">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">#</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">#</a>
+          </li>
+        </ul>
+
+      </div>
+      <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
+      <a class="nav-item mr-3 nav-link p-3" href="/login">Login</a>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
