@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 {% load static %}
+
+<link rel="stylesheet" href="{% static 'burgers/css/bootstrap/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'burgers/css/my_css.css' %}">
+
+
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -14,7 +20,7 @@
     <link rel="stylesheet" id="fname" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
   </head>
-  <body >
+  <body>
     <nav  class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="/">NyMyBu</a>
       <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -23,14 +29,29 @@
           <li class="nav-item active">
             <a class="nav-link" href="/home">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/menu">Menu</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/specials">Specials</a></li>
+              <li><a class="dropdown-item" href="/catalog/burgers">Burgers</a></li>
+              <li><a class="dropdown-item" href="/catalog/drinks">Drinks</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link" href="/about">About Us</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/about">#</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              My Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li><a class="dropdown-item" href="/basket">Basket</a></li>
+              <li><a class="dropdown-item" href="#">Personal account</a></li>
+              <li><a class="dropdown-item" href="/admin">Admin</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/contact">#</a>
@@ -41,8 +62,10 @@
       <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
       <a class="nav-item mr-3 nav-link p-3" href="/login">Login</a>
     </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <div class="container">
-      <div class="row justify-content-center">
+      <div class="row justify-content-center ">
         <div class="col-8">
           {% block content %}
           {% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base.html"%} {% load static %}
+{% block title %}Burgers{% endblock %}
+{% block content %}
+<!--<style>-->
+<!--        body {-->
+<!--            font-family: 'Arial', sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f4f4f4;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        header {-->
+<!--            background-color: #333;-->
+<!--            color: #fff;-->
+<!--            padding: 10px;-->
+<!--        }-->
+
+<!--        .burger-container {-->
+<!--            display: flex;-->
+<!--            flex-wrap: wrap;-->
+<!--            justify-content: space-around;-->
+<!--            margin: 20px;-->
+<!--        }-->
+
+<!--        .burger {-->
+<!--            width: 30%;-->
+<!--            margin: 10px;-->
+<!--            padding: 10px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            background-color: #fff;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--         img {-->
+<!--            max-width: 200px;  /* Ensure the image does not exceed the width of its container */-->
+<!--            height: 200px;     /* Maintain the aspect ratio */-->
+<!--            width: 100%;      /* Set the width to 100% of its container */-->
+<!--            margin-bottom: 10px;-->
+<!--        }-->
+<!--    </style>-->
+<body>
+<div class="product-category__header text-center">
+	<h1 class="mb-3">Drinks</h1>
+</div>
+<!--<div class="burger-container">-->
+<!--        <div class="burger">-->
+<!--            <img src="https://static01.nyt.com/images/2023/07/13/multimedia/13xp-cheese-king/13xp-cheese-king-superJumbo.jpg" alt="Cheeseburger">-->
+<!--            <h3>Cheeseburger</h3>-->
+<!--            <p>A classic burger with a juicy beef patty and melted cheese.</p>-->
+<!--        </div>-->
+
+<!--        <div class="burger">-->
+<!--            <img src="https://i.pinimg.com/564x/5b/f8/ca/5bf8ca02fc499db71f4b34d86813edf0.jpg" alt="Veggie Burger">-->
+<!--            <h3>Veggie Burger</h3>-->
+<!--            <p>Perfect for vegetarians, a tasty patty made from fresh vegetables.</p>-->
+<!--        </div>-->
+
+<!--        <div class="burger">-->
+<!--            <img src="https://i.pinimg.com/564x/cc/9a/7f/cc9a7f913081588ba2a16974c91728a0.jpg" alt="Chicken Burger">-->
+<!--            <h3>Chicken Burger</h3>-->
+<!--            <p>Grilled chicken breast topped with fresh lettuce and mayo.</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Add more burger divs as needed &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    <section>-->
+<!--        <p>Choose your favorite burger from our delicious menu!</p>-->
+<!--        &lt;!&ndash; Add more content as needed &ndash;&gt;-->
+<!--    </section>-->
+<!--</body>-->
+<!--<div class="burgers_wrap">-->
+<div class="row">
+
+{% for product in goods %}
+<div class="col-md-4 mb-4">
+    <div class="product">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="{{product.image}}" class="drink" alt="...">
+            <div class="card-body">
+                <a href="../goods/product.html">
+                    <p class="card-title">{{product.name }}</p>
+                </a>
+<!--                <p class="card-text text-truncate">{{product.description}}</p>-->
+    <!--            <p class="product_id">id: 02265</p>-->
+                <div class="d-flex justify-content-between">
+    <!--                <p><s>100</s> $</p>-->
+    <!--                <p><strong>90.00 $</strong></p>-->
+    <!--                <span class="badge bg-warning text-dark">Скидка 10.00 %</span>-->
+                    <p><strong>{{product.price}} $</strong></p>
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn add-to-cart">
+                        <img class="mx-1" src="{% static 'icons/cart-plus.svg' %}" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
