@@ -34,9 +34,9 @@
               Menu
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/specials">Specials</a></li>
-              <li><a class="dropdown-item" href="/catalog/burgers">Burgers</a></li>
-              <li><a class="dropdown-item" href="/catalog/drinks">Drinks</a></li>
+              {% for category in categories %}
+              <li><a class="dropdown-item" href="catalog/burgers">{{ category.name }}</a></li>
+              {% endfor %}
             </ul>
           </li>
           <li class="nav-item ">

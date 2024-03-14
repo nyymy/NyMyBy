@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Categories(models.Model):
-    name = models.CharField(max_length=150, unique=True, default="new_one")
+    name = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=200, unique=True, blank=True, null=True, verbose_name="URL")
 
     class Meta:
@@ -10,6 +10,8 @@ class Categories(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
+    def __str__(self):
+        return self.name
 
 class Products(models.Model):
     name = models.CharField(max_length=150, unique=True, verbose_name="Name")
@@ -25,4 +27,9 @@ class Products(models.Model):
         db_table = "product"
         verbose_name = "Product"
         verbose_name_plural = "Products"
+
+    def __str__(self):
+        return self.name
+
+
 
