@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-
+{% load goods_tags %}
 <link rel="stylesheet" href="{% static 'burgers/css/bootstrap/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'burgers/css/my_css.css' %}">
 
@@ -18,7 +18,7 @@
     </title>
     <link rel="icon" href="{% static 'images/hamburger.png' %}" type="image/x-icon">
     <link rel="stylesheet" id="fname" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
+<!--    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">-->
   </head>
   <body>
     <nav  class="navbar navbar-expand-lg navbar-light bg-light">
@@ -27,15 +27,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/home">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Menu
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% tag_categories as categories%}
               {% for category in categories %}
-              <li><a class="dropdown-item" href="catalog/burgers">{{ category.name }}</a></li>
+              <li><a class="dropdown-item" href="catalog/">{{ category.name }}</a></li>
               {% endfor %}
             </ul>
           </li>

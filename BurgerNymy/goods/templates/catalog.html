@@ -1,0 +1,48 @@
+{% extends "base.html"%} {% load static %}
+{% block title %}Catalog{% endblock %}
+{% block content %}
+<body>
+<div class="product-category__header text-center">
+	<h1 class="mb-3">Catalog</h1>
+    <div class="product-category__subtitle"><h2>All positions</h2></div>
+    <div class="product-category__subtitle_2 mt-4"><h4>Here you can find all positions <h4></div>
+</div>
+
+<div class="row">
+
+{% for product in goods %}
+<div class="col-md-4 mb-4">
+    <div class="product">
+        <div class="card border-primary rounded custom-shadow">
+            {% if product.image %}
+                <img src="{{product.image.url}}" class="card-img-top" alt="{{ product.name }}">
+            {% else %}
+                <img src="{% static 'images/Not found image.png'%}" class="card-img-top" alt="...">
+
+            {% endif %}
+            <div class="card-body">
+                <a href="../goods/product.html">
+                    <p class="card-title">{{product.name }}</p>
+                </a>
+<!--                <p class="card-text text-truncate">{{product.description}}</p>-->
+                <p class="product_id"> id: {{ product.display_id }}</p>
+                <div class="d-flex justify-content-between">
+                    {% if product.discount%}
+                        <p><s>{{ product.price}}</s> $</p>
+                        <p><strong>{{ product.sell_price}} $</strong></p>
+                        <span class="badge bg-warning text-dark">Discount {{ product.discount }} %</span>
+                    {% else %}
+                        <p><strong>{{product.price}} $</strong></p>
+                    {% endif %}
+                    <a href="#" class="btn add-to-cart">
+                        <img class="mx-1" src="{% static 'icons/cart-plus.svg' %}" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}
+

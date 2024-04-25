@@ -11,10 +11,8 @@ def specials(request):
 
 
 def home(request):
-    categories = Categories.objects.all()
 
     context = {
-        'categories': categories
     }
     return render(request, "home.html", context)
 

@@ -1,9 +1,17 @@
 from django.shortcuts import render
+from goods.models import Products
 
 
 # Create your views here.
 def catalog(request):
-    return render()
+    goods = Products.objects.all()
+
+    context = {
+        "title": "Home - categories",
+        "goods": goods,
+    }
+    return render(request, "catalog.html", context)
+
 
 def drinks(request):
     context = {
@@ -26,12 +34,13 @@ def drinks(request):
 
     return render(request, "drinks.html", context)
 
+
 def burgers(request):
     context = {
         "title": "Burgers",
         "goods": [
             {
-                "image":"https://static01.nyt.com/images/2023/07/13/multimedia/13xp-cheese-king/13xp-cheese-king-superJumbo.jpg",
+                "image": "https://static01.nyt.com/images/2023/07/13/multimedia/13xp-cheese-king/13xp-cheese-king-superJumbo.jpg",
                 "name": "Cheesburger",
                 "description": "A classic burger with a juicy beef patty and melted cheese.",
                 "price": 5,
@@ -53,6 +62,5 @@ def burgers(request):
     return render(request, "burgers.html", context)
 
 
-
 def product(request):
-    return render(request,)
+    return render(request, )
