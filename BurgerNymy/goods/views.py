@@ -62,5 +62,12 @@ def burgers(request):
     return render(request, "burgers.html", context)
 
 
-def product(request):
-    return render(request, )
+def product(request, product_slug):
+
+    product = Products.objects.get(slug=product_slug)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, "product.html", context=context)
