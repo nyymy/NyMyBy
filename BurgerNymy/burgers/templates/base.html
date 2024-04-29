@@ -36,7 +36,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               {% tag_categories as categories%}
               {% for category in categories %}
-              <li><a class="dropdown-item" href="catalog/">{{ category.name }}</a></li>
+              <li><a class="dropdown-item" href="{% url 'catalog:index' category.slug %}">{{ category.name }}</a></li>
               {% endfor %}
             </ul>
           </li>
