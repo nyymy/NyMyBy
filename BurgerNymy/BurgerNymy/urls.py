@@ -43,9 +43,7 @@ www.site.com
 www.site.com/about/
 www.site.com/home/
 www.site.com/catalog/
-www.site.com/catalog/burgers/
-www.site.com/catalog/specials/
-www.site.com/catalog/drinks/
+
 
 
 
