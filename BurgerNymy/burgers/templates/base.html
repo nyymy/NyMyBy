@@ -58,8 +58,13 @@
             <a class="nav-link" href="/contact">#</a>
           </li>
         </ul>
-
       </div>
+
+      <form class="d-flex" role="search" action="{% url 'catalog:search' %}" method="get">
+          <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
       <a class="nav-item mr-3 nav-link p-3" href="/logout">Logout</a>
       <a class="nav-item mr-3 nav-link p-3" href="/login">Login</a>
     </nav>
