@@ -27,8 +27,7 @@ def catalog(request, category_slug=None):
     if order_by and order_by != "default":
         goods = goods.order_by(order_by)
 
-    if not goods.exists():
-        raise Http404("No products found for the given category.")
+
 
     paginator = Paginator(goods, 3)
     current_page = paginator.page(page)

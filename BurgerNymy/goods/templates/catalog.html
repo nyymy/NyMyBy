@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row">
     <!-- Форма фильтров -->
-    <div class="dropdown mb-2">
+    <div class="dropdown mt-2 mb-2">
         <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Filter
@@ -47,8 +47,12 @@
         </form>
     </div>
 
-
-
+{% if request.GET.q %}
+    <h3 class="mt-4 mb-4">Search results for {{request.GET.q}}</h3>
+    {% if not goods %}
+        <h2 class="mt-4">Nothing was found</h2>
+    {% endif %}
+{% endif %}
 
 <!--product info-->
 {% for product in goods %}
@@ -63,8 +67,17 @@
             {% endif %}
             <div class="card-body">
                 <a href="{% url 'catalog:product' product.slug %}">
-                    <p class="card-title">{{product.name }}</p>
+                    <p class="card-title">
+                        {% autoescape off %}
+                            {% if product.headline %}
+                            {{ product.headline }}
+                            {% else %}
+                            {{ product.name }}
+                            {% endif %}
+                        {% endautoescape %}
+                    </p>
                 </a>
+
 <!--                <p class="card-text text-truncate">{{product.description}}</p>-->
                 <p class="product_id"> id: {{ product.display_id }}</p>
                 <div class="d-flex justify-content-between">
@@ -87,7 +100,7 @@
 {% endfor %}
 
     <!--Pagination-->
-
+    {% if goods %}
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center my-4">
 
@@ -109,6 +122,7 @@
             </li>
         </ul>
 </nav>
+    {%endif%}
 </div>
 {% endblock content %}
 
