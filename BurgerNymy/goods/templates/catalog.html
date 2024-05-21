@@ -5,7 +5,7 @@
 {% block content %}
 <div class="row">
     <!-- Форма фильтров -->
-    <div class="dropdown mt-2 mb-2">
+    <div class="dropdown mt-2 mb-2 col">
         <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Filter
@@ -46,58 +46,63 @@
             <button type="submit" class="btn btn-primary mx-3 mt-3">Accept</button>
         </form>
     </div>
+</div>
 
-{% if request.GET.q %}
-    <h3 class="mt-4 mb-4">Search results for {{request.GET.q}}</h3>
-    {% if not goods %}
-        <h2 class="mt-4">Nothing was found</h2>
+<div class="row">
+    {% if request.GET.q %}
+        <h3 class="mt-4 mb-4">Search results for {{request.GET.q}}</h3>
+        {% if not goods %}
+            <h2 class="mt-4">Nothing was found</h2>
+        {% endif %}
     {% endif %}
-{% endif %}
+</div>
 
 <!--product info-->
-{% for product in goods %}
-<div class="col-md-4 mb-4">
-    <div class="product">
-        <div class="card border-primary rounded custom-shadow">
-            {% if product.image %}
-                <img src="{{product.image.url}}" class="card-img-top" alt="{{ product.name }}">
-            {% else %}
-                <img src="{% static 'images/Not found image.png'%}" class="card-img-top" alt="...">
+<div class="row">
+    {% for product in goods %}
+    <div class="col-md-4 mb-4">
+        <div class="product">
+            <div class="card border-primary rounded custom-shadow">
+                {% if product.image %}
+                    <img src="{{product.image.url}}" class="card-img-top" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'images/Not found image.png'%}" class="card-img-top" alt="...">
 
-            {% endif %}
-            <div class="card-body">
-                <a href="{% url 'catalog:product' product.slug %}">
-                    <p class="card-title">
-                        {% autoescape off %}
-                            {% if product.headline %}
-                            {{ product.headline }}
-                            {% else %}
-                            {{ product.name }}
-                            {% endif %}
-                        {% endautoescape %}
-                    </p>
-                </a>
-
-<!--                <p class="card-text text-truncate">{{product.description}}</p>-->
-                <p class="product_id"> id: {{ product.display_id }}</p>
-                <div class="d-flex justify-content-between">
-                    {% if product.discount%}
-                        <p><s>{{ product.price}}</s> $</p>
-                        <p><strong>{{ product.sell_price}} $</strong></p>
-                        <span class="badge bg-warning text-dark">Discount {{ product.discount }} %</span>
-                    {% else %}
-                        <p><strong>{{product.price}} $</strong></p>
-                    {% endif %}
-                    <a href="#" class="btn add-to-cart">
-                        <img class="mx-1" src="{% static 'icons/cart-plus.svg' %}" alt="Catalog Icon"
-                            width="32" height="32">
+                {% endif %}
+                <div class="card-body">
+                    <a href="{% url 'catalog:product' product.slug %}">
+                        <p class="card-title">
+                            {% autoescape off %}
+                                {% if product.headline %}
+                                {{ product.headline }}
+                                {% else %}
+                                {{ product.name }}
+                                {% endif %}
+                            {% endautoescape %}
+                        </p>
                     </a>
+
+    <!--                <p class="card-text text-truncate">{{product.description}}</p>-->
+                    <p class="product_id"> id: {{ product.display_id }}</p>
+                    <div class="d-flex justify-content-between">
+                        {% if product.discount%}
+                            <p><s>{{ product.price}}</s> $</p>
+                            <p><strong>{{ product.sell_price}} $</strong></p>
+                            <span class="badge bg-warning text-dark">Discount {{ product.discount }} %</span>
+                        {% else %}
+                            <p><strong>{{product.price}} $</strong></p>
+                        {% endif %}
+                        <a href="#" class="btn add-to-cart">
+                            <img class="mx-1" src="{% static 'icons/cart-plus.svg' %}" alt="Catalog Icon"
+                                width="32" height="32">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 
     <!--Pagination-->
     {% if goods %}
