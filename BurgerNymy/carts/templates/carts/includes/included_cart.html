@@ -8,16 +8,16 @@
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <div class="row text-center">
+                <div class="row text-center flex align-items-center ">
                     <div class="col p-0">
-                        <div class="input-group">
+                        <div class="input-group align-items-center">
                             <span class="input-group-btn ">
                                 <button type="button"
                                         class="btn btn-dark btn-sm decrement"
                                         data-cart-id=""
                                         data-cart-change-url="">-</button>
                             </span>
-                            <input type="text" class="form-control number" value="{{ cart.quantity }}" readonly>
+                            <input type="text" class="form-control h-100 number" value="{{ cart.quantity }}" readonly>
                             <span class="input-group-btn">
                                 <button type="button"
                                         class="btn btn-dark btn-sm increment"
@@ -26,16 +26,16 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col p-0">
-                        <p>x {{ cart.product.sell_price}} $ = </p>
-                    </div>
-                    <div class="col p-0"><strong>{{cart.products_price}} $</strong></div>
-                    <div class="col p-0">
+                    <span class="col p-0">
+                        x {{ cart.product.sell_price}}$  =
+                    </span>
+                    <span class="col p-0"><strong>{{cart.products_price}} $</strong></span>
+                    <span class="col p-0">
                         <a href="{%url 'carts:cart_remove' 1%}" class="remove-from-cart" data-cart-id="">
                             <img class="mx-1" src="{% static 'icons/trash3-fill.svg'%}"
                                  alt="Catalog Icon" width="16" height="16">
                         </a>
-                    </div>
+                    </span>
                 </div>
             </li>
         </ul>
