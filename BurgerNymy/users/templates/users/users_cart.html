@@ -19,9 +19,11 @@
                     <!-- Разметка корзины -->
                     {% include 'carts/includes/included_cart.html'%}
                     <!-- Закончилась разметка корзины -->
-                    <a class="btn btn-dark" href="../orders/create_order.html">
-                        Make order
-                    </a>
+                    {%if carts %}
+                        <a class="btn btn-dark" href="../orders/create_order.html">
+                            Make order
+                        </a>
+                    {%endif%}
 
                     </div>
                 </div>
