@@ -3,9 +3,9 @@
 
 {% user_carts request as carts %}
 
-<div class="">
+<div>
     <a class="navbar-brand ms-3" href="{%url 'user:users_cart'%}">
       <img src="{% static 'icons/basket.svg'%}" alt="Bootstrap" width="30" height="24">
-      <span class="quantity">{{ carts.total_quantity }}</span>
+      <span class="quantity" id="goods-in-cart-count">{{ carts.total_quantity }}</span>
     </a>
 </div>
