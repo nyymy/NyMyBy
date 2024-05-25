@@ -16,7 +16,7 @@
     <div class="container mt-5">
         <div class="row">
             <!-- Профиль с данными пользователя -->
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                     <h3 class="text-center mb-4">My profile</h3>
                     <form action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data">
@@ -88,11 +88,11 @@
             <!-- Корзина -->
             {% user_carts request as carts %}
 
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                     <h3 class="text-center mb-4">Cart</h3>
-                    <div class="container" id="cart-items-container">
-                        <div class="flex flex-column">
+                    <div class="container">
+                        <div class="flex flex-column" id="cart-items-container">
                         <!-- Разметка корзины -->
                             {% include "carts/includes/included_cart.html" %}
                         <!-- Закончилась разметка корзины -->

@@ -3,35 +3,37 @@
 
 <div class="card mb-3 text-bg-light shadow-lg">
     {%for cart in carts%}
-        <div class="card-header">
-            <h5 class="card-title">Product</h5>
+        <div class="card-header p-0 pl-2 pt-2">
+            <h5 class="card-title">{{ cart.product.name }}</h5>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <div class="row text-center flex align-items-center ">
-                    <div class="col p-0">
-                        <div class="input-group align-items-center">
+                    <div class="col-4 p-0 d-flex justify-content-center">
+                        <div class="input-group w-75 align-items-center">
                             <span class="input-group-btn ">
                                 <button type="button"
-                                        class="btn btn-dark btn-sm decrement"
+                                        class="btn btn-link text-decoration-none text-dark decrement"
                                         data-cart-id=""
                                         data-cart-change-url="">-</button>
                             </span>
-                            <input type="text" class="form-control h-100 number" value="{{ cart.quantity }}" readonly>
+                            <input type="text" class="text-center form-control h-100 number" value="{{ cart.quantity }}" readonly>
                             <span class="input-group-btn">
                                 <button type="button"
-                                        class="btn btn-dark btn-sm increment"
+                                        class="btn btn-link text-decoration-none text-dark increment"
                                         data-cart-id=""
                                         data-cart-change-url="">+</button>
                             </span>
                         </div>
                     </div>
                     <span class="col p-0">
-                        x {{ cart.product.sell_price}}$  =
+                        x {{ cart.product.sell_price}}$=
                     </span>
                     <span class="col p-0"><strong>{{cart.products_price}} $</strong></span>
-                    <span class="col p-0">
-                        <a href="{% url 'carts:cart_remove' %}" class="remove-from-cart" data-cart-id="">
+                    <span class="col-2 p-0">
+                        <a href="{% url 'carts:cart_remove' %}" class="remove-from-cart"
+                           data-cart-id="{{ cart.id }}">
+                            {% csrf_token %}
                             <img class="mx-1" src="{% static 'icons/trash3-fill.svg'%}"
                                  alt="Catalog Icon" width="16" height="16">
                         </a>
