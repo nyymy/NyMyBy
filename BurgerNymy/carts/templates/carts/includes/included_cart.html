@@ -9,20 +9,24 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <div class="row text-center flex align-items-center ">
-                    <div class="col-4 p-0 d-flex justify-content-center">
+                    <div class="col-5 p-0 d-flex justify-content-center">
                         <div class="input-group w-75 align-items-center">
                             <span class="input-group-btn ">
                                 <button type="button"
                                         class="btn btn-link text-decoration-none text-dark decrement"
-                                        data-cart-id=""
-                                        data-cart-change-url="">-</button>
+                                        data-cart-id="{{ cart.id }}"
+                                        data-cart-change-url="{% url 'carts:cart_change' %}">
+                                    {% csrf_token%}
+                                    -</button>
                             </span>
                             <input type="text" class="text-center form-control h-100 number" value="{{ cart.quantity }}" readonly>
                             <span class="input-group-btn">
                                 <button type="button"
                                         class="btn btn-link text-decoration-none text-dark increment"
-                                        data-cart-id=""
-                                        data-cart-change-url="">+</button>
+                                        data-cart-id="{{ cart.id }}"
+                                        data-cart-change-url="{% url 'carts:cart_change' %}">
+                                    {% csrf_token%}
+                                    +</button>
                             </span>
                         </div>
                     </div>

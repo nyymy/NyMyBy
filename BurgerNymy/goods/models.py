@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -29,6 +30,10 @@ class Products(models.Model):
         verbose_name = "Product"
         verbose_name_plural = "Products"
         ordering = ("id",)
+
+    def get_absolute_url(self):
+        return reverse("catalog:product", kwargs={'product_slug': self.slug})
+
     def __str__(self):
         return f'{self.name} Quantity - {self.quantity}'
 
