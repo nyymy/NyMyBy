@@ -4,7 +4,7 @@ from goods.models import Products
 from users.models import User
 
 
-class OrderitemQueryset(models.QuerySet):
+class OrderItemQueryset(models.QuerySet):
 
     def total_price(self):
         return sum(cart.products_price() for cart in self)
@@ -26,6 +26,8 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False,)
     status = models.CharField(max_length=50, default='In progress',)
 
+
+
     class Meta:
         db_table = "order"
         verbose_name = "Order"
@@ -33,6 +35,9 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order № {self.pk} | User {self.user.first_name} {self.user.last_name}"
+
+    def total_price(self):
+        return self.orderitem_set.all().total_price()
 
 
 class OrderItem(models.Model):
@@ -48,7 +53,7 @@ class OrderItem(models.Model):
         verbose_name = "Ordered product"
         verbose_name_plural = "Ordered products"
 
-    objects = OrderitemQueryset.as_manager()
+    objects = OrderItemQueryset().as_manager()
 
     def products_price(self):
         return round(self.price * self.quantity, 2)
